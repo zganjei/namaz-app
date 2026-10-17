@@ -3,10 +3,17 @@
   const ZONE = 'Europe/Stockholm';
   const SETTINGS = 'qaza-adhan-enabled-v1';
   const FIRED = 'qaza-adhan-fired-v1';
-  const sources = [
-    'https://namnak.com/wp-content/uploads/2025/10/1623739897_D1kA7.mp3',
-    'https://dl.namaz.ir/s/c/other/azan/rahim_moazenzadeh.mp3'
-  ];
+  const VOICE = 'qaza-adhan-voice-v1';
+  const tracks = {
+    farid: {name:'فرید نجفی',url:'https://shiavoice.com/stream-pxKYe',page:'https://shiavoice.com/play-pxKYe'},
+    ali: {name:'علی فانی',url:'https://shiavoice.com/stream-Rg5G7',page:'https://shiavoice.com/play-Rg5G7'},
+    karim: {name:'کریم منصوری',url:'https://shiavoice.com/stream-vO39O',page:'https://shiavoice.com/play-vO39O'},
+    hossein: {name:'حسین صبحدل',url:'https://shiavoice.com/stream-qz547',page:'https://shiavoice.com/play-qz547'},
+    nizar: {name:'نزار قطری',url:'https://shiavoice.com/stream-EhBAk',page:'https://shiavoice.com/play-EhBAk'}
+  };
+  const voiceSelect = document.getElementById('adhan-voice');
+  const artist = document.getElementById('adhan-artist');
+  const sourceLink = document.getElementById('adhan-source');
   const audio = document.getElementById('adhan-audio');
   const enable = document.getElementById('adhan-enable');
   const disable = document.getElementById('adhan-disable');
@@ -21,11 +28,20 @@
     return {day:`${p.year}-${p.month}-${p.day}`,time:`${p.hour}:${p.minute}`};
   };
   let enabled = read(SETTINGS,false) === true;
-  let timetable, timer, previewTimer, inFlight=false, sourceIndex=0, pendingPrayer=null;
+  let timetable, timer, previewTimer, inFlight=false, pendingPrayer=null, version=0;
   const attempted=new Set();
-  audio.src=sources[0];
+  const validVoice = value => Object.hasOwn(tracks,value) ? value : 'farid';
+  let voice=validVoice(read(VOICE,'farid'));
+  function loadVoice(){
+    const track=tracks[voice];
+    voiceSelect.value=voice;artist.textContent='با صدای '+track.name;
+    sourceLink.href=track.page;sourceLink.textContent='منبع صوت: '+track.name+' · صوت‌الشیعه';
+    audio.setAttribute('aria-label','اذان '+track.name);audio.src=track.url;
+    bannerLabel.textContent='اذان '+track.name+' در حال پخش است';
+  }
+  loadVoice();
   function controls(){disable.hidden=!enabled;enable.textContent=enabled?'آماده‌سازی مجدد و تست ۵ ثانیه‌ای':'فعال‌سازی و تست ۵ ثانیه‌ای';}
-  function stop(){clearTimeout(previewTimer);audio.pause();audio.currentTime=0;banner.hidden=true;pendingPrayer=null;}
+  function stop(){version++;clearTimeout(previewTimer);audio.pause();audio.currentTime=0;banner.hidden=true;pendingPrayer=null;}
   function summary(){
     if(!timetable){next.textContent='زمان‌بندی در انتظار دریافت جدول است.';return;}
     const c=clock(new Date());
@@ -39,10 +55,10 @@
     // Stop the Dua Ahd player if it is playing in another tab.
     document.querySelectorAll('audio').forEach(other=>{if(other!==audio)other.pause();});
     audio.currentTime=0;
-    pendingPrayer=prayer;
-    bannerLabel.textContent=`اذان ${prayer==='dhuhr'?'ظهر':'مغرب'} در حال پخش است`;
-    try{await audio.play();status.textContent=`اذان ${prayer==='dhuhr'?'ظهر':'مغرب'} به وقت استکهلم در حال پخش است.`;}
-    catch{messageError();}
+    pendingPrayer=prayer;const request=version;
+    bannerLabel.textContent=`اذان ${prayer==='dhuhr'?'ظهر':'مغرب'} · ${tracks[voice].name}`;
+    try{await audio.play();if(request!==version)return;status.textContent=`اذان ${prayer==='dhuhr'?'ظهر':'مغرب'} به وقت استکهلم با صدای ${tracks[voice].name} در حال پخش است.`;}
+    catch{if(request===version)messageError();}
   }
   async function tick(){
     summary();
@@ -66,14 +82,15 @@
     finally{inFlight=false;}
   }
   enable.addEventListener('click',async()=>{
-    enable.disabled=true;stop();audio.load();
+    enable.disabled=true;stop();const request=version;audio.load();
     status.textContent='در حال تست صدا…';bannerLabel.textContent='تست ۵ ثانیه‌ای اذان';
     try{
       await audio.play();
+      if(request!==version)return;
       enabled=true;write(SETTINGS,true);controls();
       status.textContent='اذان ظهر و مغرب فعال شد؛ اپ را باز نگه دارید. در حال پخش نمونه ۵ ثانیه‌ای…';
       previewTimer=setTimeout(()=>{stop();status.textContent='اذان ظهر و مغرب فعال است؛ اپ را باز نگه دارید.';tick();},5000);
-    }catch{messageError();}
+    }catch{if(request===version)messageError();}
     finally{enable.disabled=false;summary();}
   });
   disable.addEventListener('click',()=>{enabled=false;write(SETTINGS,false);stop();controls();status.textContent='پخش خودکار اذان خاموش است.';summary();});
@@ -82,13 +99,16 @@
   audio.addEventListener('pause',()=>{banner.hidden=true;});
   audio.addEventListener('ended',()=>{banner.hidden=true;pendingPrayer=null;});
   audio.addEventListener('error',()=>{
-    if(sourceIndex<sources.length-1){
-      sourceIndex++;audio.src=sources[sourceIndex];audio.load();
-      status.textContent='منبع دوم صوت آماده است؛ برای پخش، دکمه پخش را بزنید.';
-      if(pendingPrayer)audio.play().catch(messageError);
-    }else messageError();
+    status.textContent='دریافت اذان '+tracks[voice].name+' انجام نشد؛ دوباره پخش کنید یا از لینک منبع استفاده کنید.';
   });
-  window.addEventListener('storage',event=>{if(event.key===SETTINGS){enabled=read(SETTINGS,false)===true;if(!enabled)stop();controls();summary();}});
+  voiceSelect.addEventListener('change',()=>{
+    stop();voice=validVoice(voiceSelect.value);write(VOICE,voice);loadVoice();audio.load();
+    status.textContent='صدای '+tracks[voice].name+' انتخاب و ذخیره شد؛ برای شنیدن، پخش را بزنید.';
+  });
+  window.addEventListener('storage',event=>{
+    if(event.key===VOICE){stop();voice=validVoice(read(VOICE,'farid'));loadVoice();audio.load();status.textContent='صدای انتخابی: '+tracks[voice].name;}
+    if(event.key===SETTINGS){enabled=read(SETTINGS,false)===true;if(!enabled)stop();controls();summary();}
+  });
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});
   window.initAdhan = rows => {timetable=rows;clearInterval(timer);timer=setInterval(tick,1000);tick();};
   controls();summary();

@@ -70,12 +70,15 @@
   </div>
 <div class="tab-panel" id="panel-times"><section class="reading-card friday-card">
 <div class="reading-head"><h2>اوقات شرعی استکهلم</h2><p>مرکز امام علی (ع) · اکتبر ۲۰۲۶</p></div>
-<div class="adhan-card"><h3>اذان ظهر و مغرب</h3><p>با صدای رحیم مؤذن‌زاده اردبیلی</p>
-<audio id="adhan-audio" controls preload="none" aria-label="اذان رحیم مؤذن‌زاده اردبیلی"></audio>
+<div class="adhan-card"><h3>اذان ظهر و مغرب</h3><p id="adhan-artist">با صدای فرید نجفی</p>
+<label for="adhan-voice">انتخاب صدای اذان</label><select id="adhan-voice" class="times-date">
+<option value="farid">فرید نجفی · پیش‌فرض</option><option value="ali">علی فانی</option><option value="karim">کریم منصوری</option><option value="hossein">حسین صبحدل</option><option value="nizar">نزار قطری</option></select>
+<p class="adhan-help">صدای دلخواهتان را انتخاب کنید؛ با دکمه پخش می‌توانید کامل گوش دهید. انتخاب شما برای ظهر و مغرب روی همین دستگاه ذخیره می‌شود.</p>
+<audio id="adhan-audio" controls preload="none" aria-label="اذان فرید نجفی"></audio>
 <div class="adhan-actions"><button id="adhan-enable" type="button">فعال‌سازی و تست ۵ ثانیه‌ای</button><button id="adhan-disable" type="button" hidden>خاموش کردن اذان</button></div>
 <p id="adhan-status" role="status" aria-live="polite">برای آماده‌سازی صدا، دکمه فعال‌سازی را بزنید.</p><p id="adhan-next"></p>
 <p class="adhan-help">پخش خودکار فقط برای ظهر و مغرب، به وقت استکهلم است. اپ را باز نگه دارید و صدای گوشی را روشن کنید. با بسته شدن اپ، قفل صفحه یا توقف مرورگر، پخش سرِ ساعت تضمین نمی‌شود. بعد از باز کردن دوباره صفحه، صدا را مجدداً فعال کنید. زمان‌بندی فعلاً فقط برای اکتبر ۲۰۲۶ موجود است.</p>
-<a class="adhan-source" href="https://namnak.com/moazen-zadeh-azan.p112109" target="_blank" rel="noopener noreferrer">منبع صوت اذان</a></div>
+<a id="adhan-source" class="adhan-source" href="https://shiavoice.com/play-pxKYe" target="_blank" rel="noopener noreferrer">منبع صوت اذان</a></div>
 <p id="times-status" class="times-message" role="status">در حال دریافت جدول…</p>
 <div id="times-content" hidden><div class="times-controls"><button id="times-prev" type="button" aria-label="روز قبل">روز قبل</button><strong id="times-heading"></strong><button id="times-next" type="button" aria-label="روز بعد">روز بعد</button></div>
 <label for="times-date">انتخاب روز</label><input id="times-date" class="times-date" type="date" min="2026-10-01" max="2026-10-31"><button type="button" id="times-today" class="times-today">برگشت به امروز</button>
