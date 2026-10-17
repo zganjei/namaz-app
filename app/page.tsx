@@ -11,7 +11,7 @@ export default async function Home() {
         src="/tracker.html"
         title="نمازهای من"
         className="h-full w-full border-0"
-        allow="clipboard-write"
+        allow="clipboard-write; autoplay"
       />
     </main>
   );

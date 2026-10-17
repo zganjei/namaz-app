@@ -44,6 +44,7 @@
       el('prev').onclick=()=>move(-1);el('next').onclick=()=>move(1);
       el('today').onclick=()=>{const key=dateKey(new Date());if(rows[key]){selected=key;render();}};
       el('content').hidden=false;render();
+      window.initAdhan?.(rows);
       setInterval(()=>{const now=dateKey(new Date());if(now!==lastToday){if(selected===lastToday&&rows[now])selected=now;lastToday=now;render();}},30000);
     }catch(error){el('status').textContent='دریافت جدول انجام نشد؛ صفحه را دوباره باز کنید.';el('status').classList.add('times-error');}
   }

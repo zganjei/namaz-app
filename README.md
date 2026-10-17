@@ -129,8 +129,14 @@ The portable build runs Vinext directly without a host `timeout` command. The ma
 
 The Persian prayer tracker is served from `public/tracker.html`. The prayer-times tab uses `public/prayer-times.js` and `public/stockholm_prayer_times_oct_2026.json`, transcribed from the user-supplied Imam Ali Center Stockholm timetable. It contains October 2026 only. All displayed times are local Stockholm civil times, including the October 25 daylight-saving transition; do not subtract an extra hour. Sunset is not Maghrib. No separate Asr or Isha time is supplied. Outside October, the UI labels the timetable as historical instead of treating it as current.
 
-Existing prayer records and cloud backups remain separate from this read-only timetable. This change does not add background notifications or automatic audio playback.
+Existing prayer records and cloud backups remain separate from this read-only timetable. The Adhan feature below provides best-effort in-page audio playback; it does not add background notifications.
 
 ## Source and hosting
 
 This repository includes the complete application source. Dependencies, build outputs, environment files, credentials and user prayer records must not be committed. The current deployment uses Sites, Cloudflare Workers and its existing D1 binding, with ChatGPT sign-in. Copying the source to GitHub does not automatically move the database or hosting.
+
+## Adhan audio
+
+`public/adhan.js` plays the Shia Adhan by Rahim Moazenzadeh Ardabili at Dhuhr and Maghrib only, using the current Stockholm date and timetable. The viewer-selected date does not affect scheduling. The primary remote audio is linked from https://namnak.com/moazen-zadeh-azan.p112109 and the fallback is https://dl.namaz.ir/s/c/other/azan/rahim_moazenzadeh.mp3. Audio is streamed from the original hosts, not copied into this repository.
+
+Users must activate audio through the visible five-second test. Browser autoplay restrictions still apply, particularly after reload. Playback while closed, suspended or screen-locked is not guaranteed. No catch-up playback occurs after the scheduled minute. Fired occurrences are deduplicated across reloads and tabs using local storage and Web Locks when available; browsers lacking Web Locks use best-effort local-storage deduplication. Scheduling stops when the supplied monthly timetable expires. Manual controls and a stop button remain available.
