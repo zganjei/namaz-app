@@ -1,0 +1,237 @@
+{
+  "source": "Imam Ali Islamic Center, Stockholm — Bönetider oktober 2026 (user-provided image)",
+  "sourceWebsite": "https://www.imamalicenter.se/",
+  "month": "2026-10",
+  "timezone": "Europe/Stockholm",
+  "timeBasis": "Local civil time as printed, including the DST transition on 2026-10-25; never apply a second -60 minute correction.",
+  "times": {
+    "2026-10-01": {
+      "fajr": "04:36",
+      "sunrise": "06:52",
+      "dhuhr": "12:37",
+      "sunset": "18:22",
+      "maghrib": "18:51"
+    },
+    "2026-10-02": {
+      "fajr": "04:38",
+      "sunrise": "06:54",
+      "dhuhr": "12:37",
+      "sunset": "18:19",
+      "maghrib": "18:48"
+    },
+    "2026-10-03": {
+      "fajr": "04:41",
+      "sunrise": "06:56",
+      "dhuhr": "12:36",
+      "sunset": "18:16",
+      "maghrib": "18:45"
+    },
+    "2026-10-04": {
+      "fajr": "04:44",
+      "sunrise": "06:59",
+      "dhuhr": "12:36",
+      "sunset": "18:13",
+      "maghrib": "18:42"
+    },
+    "2026-10-05": {
+      "fajr": "04:46",
+      "sunrise": "07:01",
+      "dhuhr": "12:36",
+      "sunset": "18:10",
+      "maghrib": "18:39"
+    },
+    "2026-10-06": {
+      "fajr": "04:49",
+      "sunrise": "07:03",
+      "dhuhr": "12:35",
+      "sunset": "18:07",
+      "maghrib": "18:36"
+    },
+    "2026-10-07": {
+      "fajr": "04:51",
+      "sunrise": "07:06",
+      "dhuhr": "12:35",
+      "sunset": "18:04",
+      "maghrib": "18:33"
+    },
+    "2026-10-08": {
+      "fajr": "04:54",
+      "sunrise": "07:08",
+      "dhuhr": "12:35",
+      "sunset": "18:01",
+      "maghrib": "18:30"
+    },
+    "2026-10-09": {
+      "fajr": "04:56",
+      "sunrise": "07:10",
+      "dhuhr": "12:35",
+      "sunset": "17:59",
+      "maghrib": "18:28"
+    },
+    "2026-10-10": {
+      "fajr": "04:59",
+      "sunrise": "07:13",
+      "dhuhr": "12:34",
+      "sunset": "17:56",
+      "maghrib": "18:25"
+    },
+    "2026-10-11": {
+      "fajr": "05:01",
+      "sunrise": "07:15",
+      "dhuhr": "12:34",
+      "sunset": "17:53",
+      "maghrib": "18:22"
+    },
+    "2026-10-12": {
+      "fajr": "05:04",
+      "sunrise": "07:17",
+      "dhuhr": "12:34",
+      "sunset": "17:50",
+      "maghrib": "18:19"
+    },
+    "2026-10-13": {
+      "fajr": "05:06",
+      "sunrise": "07:20",
+      "dhuhr": "12:34",
+      "sunset": "17:47",
+      "maghrib": "18:16"
+    },
+    "2026-10-14": {
+      "fajr": "05:08",
+      "sunrise": "07:22",
+      "dhuhr": "12:33",
+      "sunset": "17:44",
+      "maghrib": "18:14"
+    },
+    "2026-10-15": {
+      "fajr": "05:11",
+      "sunrise": "07:25",
+      "dhuhr": "12:33",
+      "sunset": "17:41",
+      "maghrib": "18:11"
+    },
+    "2026-10-16": {
+      "fajr": "05:13",
+      "sunrise": "07:27",
+      "dhuhr": "12:33",
+      "sunset": "17:39",
+      "maghrib": "18:08"
+    },
+    "2026-10-17": {
+      "fajr": "05:15",
+      "sunrise": "07:29",
+      "dhuhr": "12:33",
+      "sunset": "17:36",
+      "maghrib": "18:05"
+    },
+    "2026-10-18": {
+      "fajr": "05:18",
+      "sunrise": "07:32",
+      "dhuhr": "12:33",
+      "sunset": "17:33",
+      "maghrib": "18:03"
+    },
+    "2026-10-19": {
+      "fajr": "05:20",
+      "sunrise": "07:34",
+      "dhuhr": "12:32",
+      "sunset": "17:30",
+      "maghrib": "18:00"
+    },
+    "2026-10-20": {
+      "fajr": "05:22",
+      "sunrise": "07:37",
+      "dhuhr": "12:32",
+      "sunset": "17:27",
+      "maghrib": "17:57"
+    },
+    "2026-10-21": {
+      "fajr": "05:25",
+      "sunrise": "07:39",
+      "dhuhr": "12:32",
+      "sunset": "17:25",
+      "maghrib": "17:55"
+    },
+    "2026-10-22": {
+      "fajr": "05:27",
+      "sunrise": "07:42",
+      "dhuhr": "12:32",
+      "sunset": "17:22",
+      "maghrib": "17:52"
+    },
+    "2026-10-23": {
+      "fajr": "05:29",
+      "sunrise": "07:44",
+      "dhuhr": "12:32",
+      "sunset": "17:19",
+      "maghrib": "17:49"
+    },
+    "2026-10-24": {
+      "fajr": "05:31",
+      "sunrise": "07:46",
+      "dhuhr": "12:32",
+      "sunset": "17:16",
+      "maghrib": "17:47"
+    },
+    "2026-10-25": {
+      "fajr": "04:34",
+      "sunrise": "06:49",
+      "dhuhr": "11:31",
+      "sunset": "16:14",
+      "maghrib": "16:44"
+    },
+    "2026-10-26": {
+      "fajr": "04:36",
+      "sunrise": "06:51",
+      "dhuhr": "11:31",
+      "sunset": "16:11",
+      "maghrib": "16:42"
+    },
+    "2026-10-27": {
+      "fajr": "04:38",
+      "sunrise": "06:54",
+      "dhuhr": "11:31",
+      "sunset": "16:08",
+      "maghrib": "16:39"
+    },
+    "2026-10-28": {
+      "fajr": "04:40",
+      "sunrise": "06:56",
+      "dhuhr": "11:31",
+      "sunset": "16:06",
+      "maghrib": "16:37"
+    },
+    "2026-10-29": {
+      "fajr": "04:42",
+      "sunrise": "06:59",
+      "dhuhr": "11:31",
+      "sunset": "16:03",
+      "maghrib": "16:34"
+    },
+    "2026-10-30": {
+      "fajr": "04:44",
+      "sunrise": "07:01",
+      "dhuhr": "11:31",
+      "sunset": "16:01",
+      "maghrib": "16:32"
+    },
+    "2026-10-31": {
+      "fajr": "04:47",
+      "sunrise": "07:04",
+      "dhuhr": "11:31",
+      "sunset": "15:58",
+      "maghrib": "16:29"
+    }
+  },
+  "semantics": {
+    "fajr": "Gryning — اذان صبح",
+    "sunrise": "Soluppgång — طلوع آفتاب",
+    "dhuhr": "Middag — اذان ظهر",
+    "sunset": "Solnedgång — غروب آفتاب؛ اذان مغرب نیست",
+    "maghrib": "Skymning — اذان مغرب"
+  },
+  "notProvided": [
+    "asr",
+    "isha"
+  ]
+}
